@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"></head>
+<body>
+    <div th:replace="common/header :: navigation"></div>
+
+    <div class="container main">
+        <div class="row">
+            <div class="col-md-6">
+                <form th:action="@{/transfer/betweenAccounts}" method="post">
+                    <div class="form-group">
+                        <label for="transferFrom">1. Please select the account you would like to transfer From:</label>
+                        <select name="transferFrom"
+                                id="transferFrom"
+                                class="form-control"
+                                required="required"
+                                th:value="${form.transferFrom}">
+                            <option disabled="disabled"
+                                    selected="selected"> -- select your account -- </option>
+                            <option>Primary</option>
+                            <option>Saving</option>
+                        </select>
+                        <br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transferTo">2. Please select the account you would like to transfer To:</label>
+                        <select name="transferTo"
+                                id="transferTo"
+                                class="form-control"
+                                required="required"
+                                th:value="${form.transferTo}">
+                            <option selected="selected" disabled="disabled"> -- select your account -- </option>
+                            <option>Primary</option>
+                            <option>Saving</option>
+                        </select>
+                        <br/>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="amount">3. Please specify the amount you would like to transfer: </label>
+                        <span class="input-group-addon">Amount $</span>
+                        <input th:value="${form.amount}"
+                               type="text"
+                               name="amount"
+                               id="amount"
+                               class="form-control"
+                               aria-label="Amount (to the nearest dollar)"/>
+                    </div>
+                    <span class="help-block" th:errors="${form.amount}" style="color: red"></span>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Transfer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

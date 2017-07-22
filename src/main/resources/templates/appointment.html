@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"></head>
+<body>
+    <div th:replace="common/header :: navigation"></div>
+
+    <div class="container main">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Schedule an Appointment</h3>
+                <form th:action="@{/appointment/create}" method="post" id="appointmentForm">
+                    <input type="hidden" name="id" th:value="${appointment.id}" />
+                    
+                    <div class="form-group">
+                        <label for="dateString">Pick a Date and Time:</label>
+                        <div class="input-append date form_datetime input-group">
+                            <input id="dateString"
+                                   type="text"
+                                   class="form-control"
+                                   name="dateString"
+                                   th:value="${dateString}"
+                                   required="required"
+                                   readonly="readonly"/>
+                            <span class="input-group-addon"><i class="fa fa-times" aria-hidden="true"></i></span>
+                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Pick a location:</label>
+                        <select name="location"
+                                id="location"
+                                class="form-control"
+                                th:value="${appointment.location}"
+                                required="required">
+                            <option selected="selected" disabled="disabled"> -- select the location -- </option>
+                            <option>Boston</option>
+                            <option>New York</option>
+                            <option>Chicago</option>
+                            <option>San Francisco</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Notes:</label>
+                        <textarea name="description"
+                                  id="description"
+                                  class="form-control"
+                                  placeholder="Description"
+                                  th:value="${appointment.description}"
+                                  th:text="${appointment.description}"></textarea>
+                    </div>
+
+                    <a id="submitAppointment" class="btn btn-primary">Submit Appointment</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

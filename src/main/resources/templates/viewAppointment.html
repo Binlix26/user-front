@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"></head>
+<body>
+    <div th:replace="common/header :: navigation"></div>
+
+    <div class="container main">
+        <div class="table-responsive">
+            <table id="example" class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Schedule</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="appointment : ${appointmentList}">
+                        <td data-th-text="${appointment.date}">...</td>
+                        <td data-th-text="${appointment.description}">...</td>
+                        <td data-th-text="${appointment.location}">...</td>
+                        <td data-th-text="${appointment.confirmed}? 'Confirmed' : 'Pending' ">...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="common/header :: body-bottom-scripts"></div>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+</body>
+</html>

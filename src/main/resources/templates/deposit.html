@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"></head>
+<body>
+    <div th:replace="common/header :: navigation"></div>
+
+    <div class="container main">
+        <div class="row">
+            <div class="col-md-6">
+                <form th:action="@{/account/deposit}" method="post">
+                    <div class="form-group">
+                        <label for="accountType">1. Please select the account you would like to deposit:</label>
+                        <select name="accountType"
+                                id="accountType"
+                                class="form-control"
+                                required="required"
+                                th:value="${form.accountType}">
+                            <option disabled="disabled" 
+                                    selected="selected"> -- select your account -- </option>
+                            <option>Primary</option>
+                            <option>Saving</option>
+                        </select>
+                        <span class="help-block" th:errors="${form.accountType}" style="color: red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">2. Please specify the amount you would like to deposit:</label>
+                        <span class="input-group-addon">Amount $</span>
+                        <input type="text"
+                               class="form-control"
+                               name="amount"
+                               th:value="${form.amount}"
+                        id="amount"/>
+                        <span class="help-block" th:errors="${form.amount}" style="color: red"></span>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Deposit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

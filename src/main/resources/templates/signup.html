@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"></head>
+<body>
+<div class="container">
+    <div class="row main">
+        <div class="panel-heading text-center">
+            <h1>Sign Up</h1>
+            <hr/>
+        </div>
+        <div class="main-center">
+            <form class="form-horizontal" th:action="@{/signup}" method="post">
+                <div class="form-group">
+                    <label for="firstName" class="control-label">First Name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter your first name"
+                               id="firstName"
+                               required="required"
+                               name="firstName"
+                               th:value="${user.firstName}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="control-label">Last Name</label>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter your last name"
+                               id="lastName"
+                               required="required"
+                               name="lastName"
+                               th:value="${user.lastName}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="control-label">Phone</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="xxx-xxx-xxxx"
+                               id="phone"
+                               required="required"
+                               name="phone"
+                               th:value="${user.phone}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label>
+                    <span class="help-block bg-danger" th:if="${emailExists}">Email already exists</span>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter your email"
+                               id="email"
+                               required="required"
+                               name="email"
+                               th:value="${user.email}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="control-label">Username</label>
+                    <span class="help-block bg-danger" th:if="${usernameExists}">Username already exists</span>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Enter your username"
+                               id="username"
+                               required="required"
+                               name="username"
+                               th:value="${user.username}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                        <input type="password"
+                               class="form-control"
+                               placeholder="Enter your password"
+                               id="password"
+                               required="required"
+                               name="password"
+                               th:value="${user.password}"/>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="showPassword" type="checkbox"/>Show Password
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block">Sign up</button>
+                </div>
+                <hr/>
+                <div class="form-group ">
+                    <a class="btn btn-info btn-lg btn-block" th:href="@{/}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>
