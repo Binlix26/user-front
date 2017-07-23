@@ -34,6 +34,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<Appointment> findAll() {
+        return appointmentRepository.findAll();
+    }
+
+    @Override
     public List<Appointment> findAll(String username) {
         User user = userService.findByUsername(username);
         List<Appointment> appointmentList = appointmentRepository.findAll().stream()
