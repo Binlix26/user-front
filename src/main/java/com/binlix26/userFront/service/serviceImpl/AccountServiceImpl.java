@@ -16,7 +16,7 @@ import java.util.Date;
  * Created by binlix26 on 17/07/17.
  */
 @Service
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private UserService userService;

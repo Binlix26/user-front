@@ -1,7 +1,6 @@
 package com.binlix26.userFront.service.serviceImpl;
 
 import com.binlix26.userFront.model.User;
-import com.binlix26.userFront.model.security.Role;
 import com.binlix26.userFront.model.security.UserRole;
 import com.binlix26.userFront.repository.RoleRepository;
 import com.binlix26.userFront.repository.UserRepository;
@@ -46,18 +45,6 @@ public class UserServiceImpl implements UserService {
         else {
             String encryptedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encryptedPassword);
-
-             // do not understand why I need this
-//            for (UserRole userRole : userRoles) {
-//                Role role = userRole.getRole();
-//                role.getUserRoles().add(userRole);
-//                roleRepository.save(role);
-//            }
-
-            // do not understand why I need this
-//            for (UserRole ur : userRoles) {
-//                roleRepository.save(ur.getRole());
-//            }
 
             user.getUserRoles().addAll(userRoles);
             // initialise accounts
